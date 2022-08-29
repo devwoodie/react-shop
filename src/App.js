@@ -3,6 +3,7 @@ import './App.css';
 import {useState} from "react";
 import { Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Data from './data';
+import {Routes, Route, Link} from "react-router-dom";
 
 
 function App() {
@@ -10,6 +11,10 @@ function App() {
     let [shoes] = useState(Data);
     return (
         <div className="App">
+            <Routes>
+                <Route/>
+            </Routes>
+
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home" className="logo">ReactShop</Navbar.Brand>
