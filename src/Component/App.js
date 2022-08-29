@@ -15,18 +15,18 @@ function App() {
         <div className="App">
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home" className="logo">ReactShop</Navbar.Brand>
+                    <Navbar.Brand onClick={() => {navigate('/')}} className="logo">ReactShop</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
                             <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
                             <NavDropdown title="Products" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Product1</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Product2</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Product3</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/detail/0')}}>Product1</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/detail/1')}}>Product2</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/detail/2')}}>Product3</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">All Products</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/')}}>All Products</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>

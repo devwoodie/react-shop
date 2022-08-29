@@ -4,11 +4,12 @@
 .logo{
   color: #00c471;
   font-weight: bold;
+  cursor: pointer;
 }
 .navbar-brand:focus, .navbar-brand:hover{
   color: #00c471;
 }
-.nav-link.active{font-weight: bold;}
+.nav-link:hover{font-weight: bold;}
 .main-img{
   height: 300px;
   background: url("./Image/main_img.png") center;
