@@ -13,10 +13,14 @@ let cart = createSlice({
         },
         addItem(state, action){
             state.push(action.payload)
+        },
+        removeCount(state, action){
+            let index = state.findIndex((a) => {return a.id == action.payload})
+            state[index].count--;
         }
     }
 });
 
-export let { addCount, addItem } = cart.actions
+export let { addCount, addItem, removeCount } = cart.actions
 
 export default cart

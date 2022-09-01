@@ -37,8 +37,6 @@ const Detail = (props) => {
                         </div> : null
                 }
 
-                {count}
-                <button onClick={() => {setCount(count + 1)}}>버튼</button>
                 <div className="row">
                     <div className="col-md-6">
                         <img src={'https://codingapple1.github.io/shop/shoes'+(findId.id + 1)+'.jpg'} width="100%" />
@@ -47,8 +45,11 @@ const Detail = (props) => {
                         <h4 className="pt-5">{findId.title}</h4>
                         <p>{findId.content}</p>
                         <p>{findId.price}원</p>
+                        수량 : {count}
+                        <button className="count-btn" onClick={() => {setCount(count + 1)}}>+1</button>
                         <button className="btn btn-danger" onClick={() => {
-                            dispatch(addItem({id : 2, name : 'Grey Yordan', count : 1}))
+                            dispatch(addItem({id : 3, name : findId.title, count : count}))
+                            console.log(findId.title)
                         }}>장바구니 담기</button>
                     </div>
                 </div>

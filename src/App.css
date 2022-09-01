@@ -26,6 +26,14 @@
   font-weight: bold;
   margin-top: 20px;
 }
+.count-btn{
+  display: block;
+  margin: 20px auto;
+}
+.cart-count{
+  width: 30px;
+  margin: 0 10px;
+}
 /*animation */
 .start{opacity: 0;}
 .end{
