@@ -48,8 +48,7 @@ const Detail = (props) => {
                         수량 : {count}
                         <button className="count-btn" onClick={() => {setCount(count + 1)}}>+1</button>
                         <button className="btn btn-danger" onClick={() => {
-                            dispatch(addItem({id : 3, name : findId.title, count : count}))
-                            console.log(findId.title)
+                            dispatch(addItem({id : findId.id, name : findId.title, count : count}))
                         }}>장바구니 담기</button>
                     </div>
                 </div>
