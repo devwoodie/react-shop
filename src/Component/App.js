@@ -2,17 +2,25 @@
 import '../App.css';
 import Data from '../data';
 import Detail from './Detail';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
 
 function App() {
 
     let [shoes, setShoes] = useState(Data);
-    let [click, setClick] = useState(0);
     let [dataComp, setDataComp] = useState(true);
     let navigate = useNavigate();
+    let [fade, setFade] = useState('');
+
+    useEffect(() => {
+        setFade('end');
+        return () => {
+            setFade('');
+        };
+    }, []);
+
 
     const noItem = () => {
         alert('상품이 존재하지 않습니다.');
@@ -20,7 +28,7 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div className={'App start ' + fade}>
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand onClick={() => {navigate('/')}} className="logo">ReactShop</Navbar.Brand>
