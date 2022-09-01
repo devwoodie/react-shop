@@ -1,9 +1,12 @@
 import { Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
+import { addItem } from "../Store/cartSlice";
+import {useDispatch} from "react-redux";
 
 const Detail = (props) => {
 
+    let dispatch = useDispatch();
     let [count, setCount] = useState(0);
     let [alerts, setAlerts] = useState(true);
     let [num, setNum] = useState('');
@@ -44,7 +47,9 @@ const Detail = (props) => {
                         <h4 className="pt-5">{findId.title}</h4>
                         <p>{findId.content}</p>
                         <p>{findId.price}원</p>
-                        <button className="btn btn-danger">주문하기</button>
+                        <button className="btn btn-danger" onClick={() => {
+                            dispatch(addItem({id : 2, name : 'Grey Yordan', count : 1}))
+                        }}>장바구니 담기</button>
                     </div>
                 </div>
                 <Nav variant="tabs"  defaultActiveKey="link0">
@@ -80,7 +85,7 @@ const TabContent = ({tab}) => {
 
     return(
         <div className={'start ' + fade}>
-            { [<div></div>, <div>내용1</div>, <div>내용2</div>][tab] }
+            { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab] }
         </div>
     )
 };

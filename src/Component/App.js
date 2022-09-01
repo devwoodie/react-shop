@@ -38,7 +38,6 @@ function App() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
-                            <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
                             <NavDropdown title="Products" id="basic-nav-dropdown">
                                 <NavDropdown.Item onClick={() => {navigate('/detail/0')}}>Product1</NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => {navigate('/detail/1')}}>Product2</NavDropdown.Item>
@@ -46,6 +45,7 @@ function App() {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={() => {navigate('/')}}>All Products</NavDropdown.Item>
                             </NavDropdown>
+                            <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
