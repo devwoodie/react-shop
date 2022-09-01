@@ -2,7 +2,8 @@
 import '../App.css';
 import Data from '../data';
 import Detail from './Detail';
-import {useState, useEffect} from "react";
+import Cart from './Cart';
+import {useState, useEffect, createContext} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
@@ -99,7 +100,12 @@ function App() {
                     </>
                 }/>
 
-                <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
+                <Route path="/detail/:id" element={
+                    <Detail shoes={shoes}/>
+                }/>
+
+                <Route path="/cart" element={ <Cart /> } />
+
                 <Route path="/about" element={<About/>}>
                     <Route path="member" element={<div>멤버 정보</div>}/>
                     <Route path="location" element={<About/>}/>

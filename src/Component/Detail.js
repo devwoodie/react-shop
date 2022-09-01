@@ -47,7 +47,6 @@ const Detail = (props) => {
                         <button className="btn btn-danger">주문하기</button>
                     </div>
                 </div>
-
                 <Nav variant="tabs"  defaultActiveKey="link0">
                     <Nav.Item>
                         <Nav.Link eventKey="link0" onClick={() => {setTab(0)}}>버튼0</Nav.Link>
@@ -81,7 +80,7 @@ const TabContent = ({tab}) => {
 
     return(
         <div className={'start ' + fade}>
-            { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab] }
+            { [<div></div>, <div>내용1</div>, <div>내용2</div>][tab] }
         </div>
     )
 };
