@@ -10,6 +10,7 @@ import axios from "axios";
 function App() {
 
     let [shoes, setShoes] = useState(Data);
+    let [click, setClick] = useState(0);
     let [dataComp, setDataComp] = useState(true);
     let navigate = useNavigate();
     let [fade, setFade] = useState('');
