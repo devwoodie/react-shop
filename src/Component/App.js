@@ -8,6 +8,7 @@ import {useState, useEffect, createContext} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
+import {useQuery} from "react-query";
 
 function App() {
 
@@ -34,6 +35,13 @@ function App() {
         setDataComp(true);
     };
 
+    let result = useQuery('fff', () => {
+        return axios.get('https://codingapple1.github.io/userdata.json').then((a) => {
+            return a.data
+        }),
+            {staleTime : 2000}
+    })
+
     return (
         <div className={'App start ' + fade}>
             <Navbar bg="light" expand="lg">
@@ -52,6 +60,9 @@ function App() {
                             </NavDropdown>
                             <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
                         </Nav>
+                        <Nav className="ms-auto">반가워요 {
+                            result.isLoading ? 'loading...' : result.data.name
+                        }</Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
