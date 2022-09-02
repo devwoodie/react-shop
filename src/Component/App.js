@@ -10,6 +10,10 @@ import axios from "axios";
 
 function App() {
 
+    useEffect(() => {
+        localStorage.setItem('watched', JSON.stringify( [ ] ))
+    },[])
+
     let [shoes, setShoes] = useState(Data);
     let [click, setClick] = useState(0);
     let [dataComp, setDataComp] = useState(true);
@@ -91,7 +95,7 @@ function App() {
                                 {
                                     shoes.map((k, i) => {
                                         return(
-                                            <Product shoes={shoes[i]} i={i} key={i}></Product>
+                                            <Product navigate={navigate} shoes={shoes[i]} i={i} key={i}></Product>
                                         )
                                     })
                                 }
@@ -141,7 +145,7 @@ function About(){
 
 function Product(props) {
     return(
-        <Col sm={3} className="item-list">
+        <Col onClick={() => {props.navigate('/detail/'+props.shoes.id)}} sm={3} className="item-list">
             <img src={'https://codingapple1.github.io/shop/shoes'+ (props.i+1)+'.jpg'} style={{"width": "80%"}}/>
             <h4>{props.shoes.title}</h4>
             <p>{props.shoes.content}</p>

@@ -17,6 +17,7 @@
 }
 .item-list{
   text-align: center;
+  cursor: pointer;
 }
 .more-btn{
   margin-top: 20px;

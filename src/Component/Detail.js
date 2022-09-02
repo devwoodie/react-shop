@@ -6,6 +6,8 @@ import {useDispatch} from "react-redux";
 
 const Detail = (props) => {
 
+
+
     let dispatch = useDispatch();
     let [count, setCount] = useState(0);
     let [alerts, setAlerts] = useState(true);
@@ -17,6 +19,17 @@ const Detail = (props) => {
     let findId = props.shoes.find((found) => {
         return found.id == id;
     })
+    //localstorage
+    useEffect(() => {
+        let watchStorage = localStorage.getItem('watched');
+        watchStorage = JSON.parse(watchStorage);
+        watchStorage.push(findId.id);
+        watchStorage = new Set(watchStorage);
+        watchStorage = Array.from(watchStorage);
+        localStorage.setItem('watched', JSON.stringify(watchStorage));
+
+    }, []);
+
 
     useEffect(() => {
         let timer = setTimeout(() => { setAlerts(false); },2000);
