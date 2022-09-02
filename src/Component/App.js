@@ -3,6 +3,7 @@ import '../App.css';
 import Data from '../data';
 import Detail from './Detail';
 import Cart from './Cart';
+import Recent from "./Recent";
 import {useState, useEffect, createContext} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
@@ -13,6 +14,7 @@ function App() {
     useEffect(() => {
         localStorage.setItem('watched', JSON.stringify( [ ] ))
     },[])
+
 
     let [shoes, setShoes] = useState(Data);
     let [click, setClick] = useState(0);
@@ -26,7 +28,6 @@ function App() {
             setFade('');
         };
     }, []);
-
 
     const noItem = () => {
         alert('상품이 존재하지 않습니다.');
@@ -54,6 +55,7 @@ function App() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            <Recent shoes={shoes} navigate={navigate} />
             <Routes>
                 <Route path="/" element={
                     <>
@@ -105,7 +107,7 @@ function App() {
                 }/>
 
                 <Route path="/detail/:id" element={
-                    <Detail shoes={shoes}/>
+                    <Detail navigate={navigate} shoes={shoes}/>
                 }/>
 
                 <Route path="/cart" element={ <Cart /> } />

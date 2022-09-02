@@ -9,7 +9,7 @@ const Detail = (props) => {
 
 
     let dispatch = useDispatch();
-    let [count, setCount] = useState(0);
+    let [count, setCount] = useState(1);
     let [alerts, setAlerts] = useState(true);
     let [num, setNum] = useState('');
     let [tab, setTab] = useState(0);
@@ -61,7 +61,9 @@ const Detail = (props) => {
                         수량 : {count}
                         <button className="count-btn" onClick={() => {setCount(count + 1)}}>+1</button>
                         <button className="btn btn-danger" onClick={() => {
-                            dispatch(addItem({id : findId.id, name : findId.title, count : count}))
+                            dispatch(addItem({id : findId.id, name : findId.title, count : count}));
+                            alert('장바구니에 추가되었습니다.');
+                            props.navigate('/cart');
                         }}>장바구니 담기</button>
                     </div>
                 </div>
