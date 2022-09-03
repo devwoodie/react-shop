@@ -10,16 +10,9 @@ const Recent = (props) => {
             <div className="recent-list">
             {
                 getLocal.map((item, i) => {
-                    console.log(item.length)
                     return(
                         <figure key={i} className="recent-item" onClick={() => { props.navigate( '/detail/'+ item ) }}>
-                            {
-                                getLocal != 0 ?
-                                    <img src={'https://codingapple1.github.io/shop/shoes' + (item+1) + '.jpg'} />
-                                    : <figcaption>최근 상품이 없습니다.</figcaption>
-                            }
-
-
+                            <img src={'https://codingapple1.github.io/shop/shoes' + (item+1) + '.jpg'} />
                         </figure>
                     )
                 })
