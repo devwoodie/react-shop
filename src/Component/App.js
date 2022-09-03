@@ -1,14 +1,19 @@
 /* eslint-disable */
 import '../App.css';
 import Data from '../data';
-import Detail from './Detail';
-import Cart from './Cart';
-import Recent from "./Recent";
-import {useState, useEffect, createContext} from "react";
+// import Detail from './Detail';
+// import Cart from './Cart';
+// import Recent from "./Recent";
+import {useState, Suspense, useEffect, lazy, createContext} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
 import {useQuery} from "react-query";
+
+const Detail = lazy(() => import('./Detail'));
+const Cart = lazy(() => import('./Cart'));
+const Recent = lazy(() => import('./Recent'));
+
 
 function App() {
 
@@ -67,6 +72,7 @@ function App() {
                 </Container>
             </Navbar>
             <Recent shoes={shoes} navigate={navigate} />
+            <Suspense fallback={<div>로딩중입니다...</div>}>
             <Routes>
                 <Route path="/" element={
                     <>
@@ -133,7 +139,7 @@ function App() {
                 </Route>
                 <Route path="*" element={<div>404 페이지 오류</div>}/>
             </Routes>
-
+        </Suspense>
 
         </div>
     );
