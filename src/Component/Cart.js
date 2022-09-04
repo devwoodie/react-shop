@@ -2,14 +2,32 @@ import { Table } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
 import {changeName, plusAge} from "../Store/userSlice.js";
 import {addCount, removeCount, removeItem} from "../Store/cartSlice";
+import {memo, useMemo, useState} from "react";
+
+let Child = memo(function(){
+    console.log('rerender');
+    return <div>child</div>
+})
+
+let Child2 = () => {
+    return <div>child2</div>
+}
 
 const Cart = () => {
 
+    let result = useMemo(() => {return Child2()}, [])
+
     let cartList = useSelector((state) => state);
     let dispatch = useDispatch()
+    let [count, setCount] = useState(0)
 
     return(
         <div>
+            <Child></Child>
+            <button onClick={() => {
+                setCount(count += 1);
+            }}>+</button>
+
             <h5>{cartList.user.name} {cartList.user.age}의 장바구니</h5>
             <button onClick={() => { dispatch(plusAge(1))} }>+1</button>
             <Table>
