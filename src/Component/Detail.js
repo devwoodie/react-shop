@@ -63,7 +63,7 @@ const Detail = (props) => {
                         <button className="btn btn-danger" onClick={() => {
                             dispatch(addItem({id : findId.id, name : findId.title, count : count}));
                             alert('장바구니에 추가되었습니다.');
-                            props.navigate('/cart');
+                            props.navigate('/react-shop/cart');
                         }}>장바구니 담기</button>
                     </div>
                 </div>

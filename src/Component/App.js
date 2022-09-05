@@ -1,18 +1,18 @@
 /* eslint-disable */
 import '../App.css';
 import Data from '../data';
-// import Detail from './Detail';
-// import Cart from './Cart';
-// import Recent from "./Recent";
+import Detail from './Detail';
+import Cart from './Cart';
+import Recent from "./Recent";
 import {useState, Suspense, useEffect, lazy, createContext} from "react";
 import {Button, Row, Col, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import axios from "axios";
 import {useQuery} from "react-query";
 
-const Detail = lazy(() => import('./Detail'));
-const Cart = lazy(() => import('./Cart'));
-const Recent = lazy(() => import('./Recent'));
+// const Detail = lazy(() => import('./Detail'));
+// const Cart = lazy(() => import('./Cart'));
+// const Recent = lazy(() => import('./Recent'));
 
 
 function App() {
@@ -51,19 +51,19 @@ function App() {
         <div className={'App start ' + fade}>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand onClick={() => {navigate('/')}} className="logo">ReactShop</Navbar.Brand>
+                    <Navbar.Brand onClick={() => {navigate('/react-shop/')}} className="logo">ReactShop</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
+                            <Nav.Link onClick={() => {navigate('/react-shop/')}}>Home</Nav.Link>
                             <NavDropdown title="Products" id="basic-nav-dropdown">
-                                <NavDropdown.Item onClick={() => {navigate('/detail/0')}}>Product1</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => {navigate('/detail/1')}}>Product2</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => {navigate('/detail/2')}}>Product3</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/react-shop/detail/0')}}>Product1</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/react-shop/detail/1')}}>Product2</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/react-shop/detail/2')}}>Product3</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={() => {navigate('/')}}>All Products</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {navigate('/react-shop/')}}>All Products</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
+                            <Nav.Link onClick={() => {navigate('/react-shop/cart')}}>Cart</Nav.Link>
                         </Nav>
                         <Nav className="ms-auto">반가워요 {
                             result.isLoading ? 'loading...' : result.data.name
@@ -74,7 +74,7 @@ function App() {
             <Recent shoes={shoes} navigate={navigate} />
             <Suspense fallback={<div>로딩중입니다...</div>}>
             <Routes>
-                <Route path="/" element={
+                <Route path="/react-shop/" element={
                     <>
                         <div className="main-img"></div>
                         <Container>
@@ -123,11 +123,11 @@ function App() {
                     </>
                 }/>
 
-                <Route path="/detail/:id" element={
+                <Route path="/react-shop/detail/:id" element={
                     <Detail navigate={navigate} shoes={shoes}/>
                 }/>
 
-                <Route path="/cart" element={ <Cart /> } />
+                <Route path="/react-shop/cart" element={ <Cart /> } />
 
                 <Route path="/about" element={<About/>}>
                     <Route path="member" element={<div>멤버 정보</div>}/>
@@ -164,7 +164,7 @@ function About(){
 
 function Product(props) {
     return(
-        <Col onClick={() => {props.navigate('/detail/'+props.shoes.id)}} sm={3} className="item-list">
+        <Col onClick={() => {props.navigate('/react-shop/detail/'+props.shoes.id)}} sm={3} className="item-list">
             <img src={'https://codingapple1.github.io/shop/shoes'+ (props.i+1)+'.jpg'} style={{"width": "80%"}}/>
             <h4>{props.shoes.title}</h4>
             <p>{props.shoes.content}</p>
